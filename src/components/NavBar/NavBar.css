@@ -1,0 +1,29 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 20px 60px;
+}
+
+li {
+  display: inline-block;
+  margin: 1rem;
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+}
+
+li:hover {
+  color: orange;
+  font-weight: bold;
+}
+
+.logo-container {
+  display: flex;
+}
+
+.logo {
+  width: 40px;
+  margin-right: 10px;
+}

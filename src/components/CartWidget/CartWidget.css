@@ -1,0 +1,16 @@
+.cart-widget {
+  margin-right: 40px;
+}
+
+.imgCarrito {
+  width: 2rem;
+}
+
+.amount-items {
+  position: absolute;
+  top: 20px;
+  right: 80px;
+  border-radius: 50%;
+  padding: 2px;
+  font-size: 12px;
+}
