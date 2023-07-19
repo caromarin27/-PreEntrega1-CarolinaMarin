@@ -1,31 +1,36 @@
 import { useState, useEffect } from 'react';
-import './ItemListContainer.css';
-import { getProducts, getProductByCategory } from '../../asyncmock';
 import ItemList from '../ItemList/ItemList';
-import ItemCount from '../ItemCount/ItemCount';
 import { useParams } from 'react-router-dom';
+import { collection, getDocs, where, query } from 'firebase/firestore';
+import {db} from '../../services/config';
 
-const ItemListContainer = (props) => {
+
+const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
-  
-  const {id} = useParams();
-  
+
+  const { id } = useParams();
+
   useEffect(() => {
-    const funcion = id ? getProductByCategory : getProducts;
-    
-    funcion(id)
-      .then(res => setProducts(res))
-  }, [id])
-  
+    const myProducts = id
+      ? query(collection(db, "productos"), where("idCategory", "==", id))
+      : collection(db, "productos");
+
+    getDocs(myProducts)
+      .then((res) => {
+        const newProducts = res.docs.map((prod) => {
+          const data = prod.data();
+          return { id: prod.id, ...data };
+        });
+        setProducts(newProducts);
+      })
+      .catch((error) => console.log(error));
+  }, [id]);
+
   return (
-    <main className='container mx-auto'>
-      <h2 className='greeting'>{props.greeting}</h2>
-      <div>
-        <ItemList products={products} className="w-1/4 h-12 m-2" />
-      </div>
-      <ItemCount />
+    <main className="container mx-auto">
+      <ItemList products={products} className="w-1/4 h-12 m-2" />
     </main>
-  )
+  );
 }
 
 export default ItemListContainer

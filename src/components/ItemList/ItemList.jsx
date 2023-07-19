@@ -1,13 +1,13 @@
-import Item from "../Item/Item"
+import Item from "../Item/Item";
 
-const ItemList = ({products}) => {
+const ItemList = ({ products }) => {
   return (
-    <div className="flex flex-wrap mb-4">
-      {
-        products.map(prod => <Item key={prod.id} {...prod} />)
-      }
+    <div className="flex flex-wrap justify-center mb-4">
+      {products.map((prod) => (
+        <Item key={prod.id} {...prod} />
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default ItemList
+export default ItemList;
