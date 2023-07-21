@@ -17,13 +17,7 @@ const Checkout = () => {
   const handlerForm = (e) => {
     e.preventDefault();
 
-    if (
-      !clientName ||
-      !clientLastName ||
-      !clientPhone ||
-      !clientEmail ||
-      !clientEmailConfirmation
-    ) {
+    if (!clientName || !clientLastName || !clientPhone || !clientEmail || !clientEmailConfirmation) {
       setError("Por favor completa todos los campos");
       return;
     }

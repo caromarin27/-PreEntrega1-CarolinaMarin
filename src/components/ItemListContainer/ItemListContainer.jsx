@@ -27,7 +27,7 @@ const ItemListContainer = () => {
   }, [id]);
 
   return (
-    <main className="container mx-auto">
+    <main className="container mx-auto mt-20">
       <ItemList products={products} className="w-1/4 h-12 m-2" />
     </main>
   );

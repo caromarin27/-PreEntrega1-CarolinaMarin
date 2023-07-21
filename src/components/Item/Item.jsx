@@ -5,7 +5,9 @@ const Item = ({ id, title, description, price, pictureUrl, stock }) => {
   return (
     <>
       <div className="card bg-white rounded-lg p-2 shadow-lg hover:shadow-xl m-4">
-        <img src={pictureUrl} alt={title} />
+        <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md lg:aspect-none group-hover:opacity-75 lg:h-80">
+          <img src={pictureUrl} alt={title} className="h-full w-full object-cover object-center lg:h-full lg:w-full" />
+        </div>
         <div className="item-info-container">
           <h3 className="font-bold">{title}</h3>
           <p>{description}</p>
